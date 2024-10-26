@@ -1,7 +1,10 @@
 import './App.css'
 
-function App() {
-	const name = "Henri"
+// commencer par transférer les données dans le composant welcome
+// ajouter "la prop props" + props.name (console.log(props et props.name)
+// destructurer
+
+function Welcome({ name }) {
   const currentHour = new Date().getHours();
   const greeting = currentHour < 12 ? "Bonjour" : "Bonsoir";
 
@@ -9,7 +12,18 @@ function App() {
     <div>
       <h1>{greeting}, {name}</h1>
       <p>Il est actuellement {currentHour} heures.</p>
+
     </div>
+  )
+}
+
+function App() {
+
+  return (
+    <div>
+    <Welcome name={"Henri"} />
+    <Welcome name={"Julie"} />
+  </div>
   )
 }
 
