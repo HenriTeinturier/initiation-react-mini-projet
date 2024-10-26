@@ -42,8 +42,12 @@ Chaque point du chapitre 2 présent dans ce dépôt est couvert par un commit sp
 Voici le code final de ce mini projet, combinant l'ensemble des fonctionnalités abordées :
 
 ```javascript
-import './App.css'
 import { useState } from 'react';
+import './App.css'
+
+// commencer par transférer les données dans le composant welcome
+// ajouter "la prop props" + props.name (console.log(props et props.name)
+// destructurer
 
 function Welcome({ name }) {
   const currentHour = new Date().getHours();
@@ -51,38 +55,48 @@ function Welcome({ name }) {
 
   return (
     <div>
-      <p>{greeting}, {name} !</p>
-    </div>
-  );
-}
-
-function LikeButton() { 
-  const [likes, setLikes] = useState(0);
-
-  const handleClick = () => {
-    setLikes(likes + 1);
-  };
-
-  return (
-    <button onClick={handleClick}>
-       {likes} ❤️
-    </button>
-  );
-}
-
-function App() {
-  return (
-    <div>
-      <Card>
-        <Welcome name="Henri" />
-        <LikeButton />           
-      </Card>
-      <Card>
-        <Welcome name="David" />
-        <LikeButton />    
-      </Card>
+      <h1>{greeting}, {name}</h1>
+      <p>Il est actuellement {currentHour} heures.</p>
     </div>
   )
 }
 
-export default App;
+function Card({children}) {
+  return (
+    <div style={{ border: "1px solid #ccc", padding: "10px" }}>
+      {children}
+    </div>
+  )
+}
+
+function LikeButton() {
+  const [likes, setLikes] = useState(0)
+
+  const handleClick = () => {
+    setLikes(likes +1)
+  }
+
+  return (
+    <button onClick={handleClick}>
+       {likes} &hearts;
+    </button>
+  )
+}
+
+function App() {
+
+  return (
+    <div>
+      <Card>
+        <Welcome name="Henri" />
+        <LikeButton />
+      </Card>
+      <Card>
+        <Welcome name="Julie" /> 
+        <LikeButton />
+      </Card> 
+  </div>
+  )
+}
+
+export default App

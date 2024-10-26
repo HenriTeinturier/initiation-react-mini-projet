@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css'
 
 // commencer par transférer les données dans le composant welcome
@@ -12,7 +13,6 @@ function Welcome({ name }) {
     <div>
       <h1>{greeting}, {name}</h1>
       <p>Il est actuellement {currentHour} heures.</p>
-
     </div>
   )
 }
@@ -25,15 +25,31 @@ function Card({children}) {
   )
 }
 
+function LikeButton() {
+  const [likes, setLikes] = useState(0)
+
+  const handleClick = () => {
+    setLikes(likes +1)
+  }
+
+  return (
+    <button onClick={handleClick}>
+       {likes} &hearts;
+    </button>
+  )
+}
+
 function App() {
 
   return (
     <div>
       <Card>
         <Welcome name="Henri" />
+        <LikeButton />
       </Card>
       <Card>
         <Welcome name="Julie" /> 
+        <LikeButton />
       </Card> 
   </div>
   )
