@@ -17,16 +17,24 @@ function Welcome({ name }) {
   )
 }
 
+function Card({children}) {
+  return (
+    <div style={{ border: "1px solid #ccc", padding: "10px" }}>
+      {children}
+    </div>
+  )
+}
+
 function App() {
-  const handleClick = () => {
-    console.log("Bouton cliqué !")
-  }
 
   return (
     <div>
-    <Welcome name={"Henri"} />
-    <Welcome name={"Julie"} />
-    <button onClick={handleClick}>Cliquez-moi</button>   
+      <Card>
+        <Welcome name="Henri" />
+      </Card>
+      <Card>
+        <Welcome name="Julie" /> 
+      </Card> 
   </div>
   )
 }
