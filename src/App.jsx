@@ -18,11 +18,15 @@ function Welcome({ name }) {
 }
 
 function App() {
+  const handleClick = () => {
+    console.log("Bouton cliqué !")
+  }
 
   return (
     <div>
     <Welcome name={"Henri"} />
     <Welcome name={"Julie"} />
+    <button onClick={handleClick}>Cliquez-moi</button>   
   </div>
   )
 }
